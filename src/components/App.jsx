@@ -11,7 +11,20 @@ export class App extends Component {
     contacts: [],
     filter: '',
   };
+  componentDidMount() {
+    const getStorageContacts = localStorage.getItem('contacts');
+    const storageContacts = JSON.parse(getStorageContacts);
+    this.setState({
+      contacts: storageContacts,
+    });
+  }
 
+  componentDidUpdate(prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      const saveContacts = JSON.stringify(this.state.contacts);
+      localStorage.setItem('contacts', saveContacts);
+    }
+  }
   //  Додаємо обробник на форму при сабміті
 
   handleSubmit = ({ name, number }) => {

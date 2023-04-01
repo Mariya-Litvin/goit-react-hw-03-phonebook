@@ -8,10 +8,6 @@ export class ContactForm extends Component {
     number: '',
   };
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log('Update');
-  // }
-
   // При вводі у два поля інпуту( name, number) змінюємо значення у state
 
   handleChange = evt => {
